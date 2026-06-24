@@ -30,4 +30,14 @@ mongoose.connect(process.env.MONGO_URI)
     });
   })
   .catch((err) => console.log(err));
+
+const corsOptions = {
+  origin: [
+    "http://localhost:5173",
+    "task-manager-26vyge0m5-fpc2.vercel.app" // you'll fill this in after deploying frontend
+  ],
+  credentials: true
+};
+
+app.use(cors(corsOptions));
   

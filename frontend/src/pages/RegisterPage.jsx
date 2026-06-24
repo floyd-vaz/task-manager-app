@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
+import API_URL from "../api";
 
 const RegisterPage = () => {
   const { login } = useAuth();
@@ -13,14 +14,19 @@ const RegisterPage = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/register", form);
+      const res = await axios.post("${API_URL}/api/auth/login", form);
       login(res.data.user, res.data.token);
       navigate("/dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong");
+    } finally {
+      setLoading(false); // add this
     }
   };
 
@@ -69,9 +75,10 @@ const RegisterPage = () => {
 
         <button
           onClick={handleSubmit}
-          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
+          disabled={loading}
+          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition disabled:opacity-50"
         >
-          Register
+          {loading ? "Registering..." : "Register"}
         </button>
 
         <p className="text-center text-gray-500 text-sm mt-4">

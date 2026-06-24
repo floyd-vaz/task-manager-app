@@ -8,6 +8,7 @@ import TaskForm from "../components/TaskForm";
 const DashboardPage = () => {
   const { token } = useAuth();
   const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const headers = { Authorization: `Bearer ${token}` };
 
@@ -17,6 +18,8 @@ const DashboardPage = () => {
       setTasks(res.data);
     } catch (err) {
       console.log(err);
+    }finally {
+      setLoading(false); // add this
     }
   };
 
@@ -79,9 +82,10 @@ const DashboardPage = () => {
 
         {/* Add Task Form */}
         <TaskForm onAdd={addTask} />
-
-        {/* Task List */}
-        {tasks.length === 0 ? (
+        
+        {loading ? (
+          <p className="text-center text-gray-400 mt-10">Loading tasks...</p>
+        ) : tasks.length === 0 ? (
           <p className="text-center text-gray-400 mt-10">No tasks yet. Add one above!</p>
         ) : (
           <div className="grid gap-4">
