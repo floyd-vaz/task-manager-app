@@ -4,6 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import Navbar from "../components/Navbar";
 import TaskCard from "../components/TaskCard";
 import TaskForm from "../components/TaskForm";
+import API_URL from "../api";
 
 const DashboardPage = () => {
   const { token } = useAuth();
@@ -14,7 +15,7 @@ const DashboardPage = () => {
 
   const fetchTasks = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/tasks", { headers });
+      const res = await axios.get(`${API_URL}/api/tasks`, { headers });
       setTasks(res.data);
     } catch (err) {
       console.log(err);
@@ -25,7 +26,7 @@ const DashboardPage = () => {
 
   const addTask = async (form) => {
     try {
-      const res = await axios.post("http://localhost:5000/api/tasks", form, { headers });
+      const res = await axios.post(`${API_URL}/api/tasks`, form, { headers });
       setTasks([...tasks, res.data]);
     } catch (err) {
       console.log(err);
@@ -34,7 +35,7 @@ const DashboardPage = () => {
 
   const updateTask = async (id, updates) => {
     try {
-      const res = await axios.put(`http://localhost:5000/api/tasks/${id}`, updates, { headers });
+      const res = await axios.put(`${API_URL}/api/tasks/${id}`, updates, { headers });
       setTasks(tasks.map((t) => (t._id === id ? res.data : t)));
     } catch (err) {
       console.log(err);
@@ -43,7 +44,7 @@ const DashboardPage = () => {
 
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${id}`, { headers });
+      await axios.delete(`${API_URL}/api/tasks/${id}`, { headers });
       setTasks(tasks.filter((t) => t._id !== id));
     } catch (err) {
       console.log(err);
