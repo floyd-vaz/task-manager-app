@@ -25,7 +25,7 @@ A full-stack task management application built with the MERN stack.
 ### Installation
 
 1. Clone the repo
-   git clone https://github.com/floyd-vaz/task-manager-app.git
+   git clone https://github.com/YOUR_USERNAME/task-manager-app.git
 
 2. Setup Backend
    cd backend
