@@ -44,9 +44,12 @@ A full-stack task management application built with the MERN stack.
 4. Open http://localhost:5173 in your browser
 
 ## Screenshots
+Login:
 ![Login](./frontend/ss/1.png)
 ![SignUp](./frontend/ss/2.png)
+Dashbord:
 ![Dashboard](./frontend/ss/3.png)
+Task:
 ![Tasks](./frontend/ss/4.png)
 
 ## Live Demo
