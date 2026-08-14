@@ -44,9 +44,10 @@ A full-stack task management application built with the MERN stack.
 4. Open http://localhost:5173 in your browser
 
 ## Screenshots
-![Dashboard](./frontend/ss/image1.png)
-![Login](./frontend/ss/image3.png)
-![Task](./frontend/ss/image2.png)
+![Login](./frontend/ss/1.png)
+![SignUp](./frontend/ss/2.png)
+![Dashboard](./frontend/ss/3.png)
+![Tasks](./frontend/ss/4.png)
 
 ## Live Demo
 Frontend: https://task-manager-app-fpc2.vercel.app
